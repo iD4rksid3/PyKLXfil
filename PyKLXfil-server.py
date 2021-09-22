@@ -1,7 +1,7 @@
 #PyKLXfil (Python Key Logger & Exfiltrator)
 #### SERVER ####
 # -*- coding: utf-8 -*-
-#Auther: 2021, Mayed Alm
+#Auther: 2021, Mayed Almm
 import os
 import sys
 import socket
