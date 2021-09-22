@@ -18,7 +18,7 @@
 ```sh
 python3 PyKLXfil-Server.py 0.0.0.0 443 &
 ```
-* For the client, edit PyKLXfil-Client.py and add your server's IP/domain and port then compile and obfuscate the script for a windows machine:
+* For the client, edit PyKLXfil-Client.py and add your server's IP/domain and port then compile and obfuscate the script for a Windows machine:
 ```sh
  nano PyKLXfil-Client.py
  #snip...       
